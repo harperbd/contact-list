@@ -29,6 +29,7 @@ class ContactForm extends Component {
                 value={this.state.firstName}
                 onChange={this.handleChange}
                 fluid
+                required
             />
             <Form.Input
                 label="Phone"
@@ -37,6 +38,7 @@ class ContactForm extends Component {
                 value={this.state.phone}
                 onChange={this.handleChange}
                 fluid
+                required
             />
             <Form.Button>Submit</Form.Button>
           </Form.Group>
