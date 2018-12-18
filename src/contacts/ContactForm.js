@@ -30,6 +30,7 @@ class ContactForm extends Component {
   };
 
   render() {
+    const { firstName, phone } = this.state;
     return (
         <Form onSubmit={this.handleSubmit}>
           <Form.Group width="equal">
@@ -37,7 +38,7 @@ class ContactForm extends Component {
                 label="First Name"
                 placeholder="First Name Here"
                 name="firstName"
-                value={this.state.firstName}
+                value={firstName}
                 onChange={this.handleChange}
                 fluid
                 required
@@ -46,7 +47,7 @@ class ContactForm extends Component {
                 label="Phone"
                 placeholder="Phone Number Here"
                 name="phone"
-                value={this.state.phone}
+                value={phone}
                 onChange={this.handleChange}
                 fluid
                 required
