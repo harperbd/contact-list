@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Header, Button, Icon, Segment } from 'semantic-ui-react';
 import Contacts from './contacts/Contacts';
 import ContactForm from './contacts/ContactForm';
 
@@ -10,8 +10,11 @@ class App extends Component {
       {id: 1, firstName: 'Bob', phone: "123-123-1234"},
       {id: 2, firstName: 'Jerry', phone: "123-543-1234"},
       {id: 3, firstName: 'Cosmo', phone: "123-186-1234"}
-    ]
+    ],
+    showForm: true
   };
+
+  toggleForm = () => this.setState({showForm: !this.state.showForm});
 
   getId = () => {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -56,7 +59,12 @@ class App extends Component {
       <Container>
         <Header as="h1">React Contact List</Header>
         <br />
-        <ContactForm add={this.addContact} />
+        <Segment>
+          <Button icon color="blue" onClick={this.toggleForm}>
+            <Icon name={this.state.showForm ? 'angle double up' : 'angle double down'} />
+          </Button>
+          {this.state.showForm ? <ContactForm add={this.addContact} /> : null }
+        </Segment>
         <br />
         <Contacts
             contacts={this.state.contacts}
