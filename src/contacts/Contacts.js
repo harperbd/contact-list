@@ -1,5 +1,6 @@
 import React from 'react';
-import { Table, Button } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
+import Contact from './Contact';
 
 const Contacts = ({ contacts }) => {
   return (
@@ -15,11 +16,7 @@ const Contacts = ({ contacts }) => {
       <Table.Body>
         {
           contacts.map( contact => (
-              <Table.Row id={contact.id}>
-                <Table.Cell>{contact.firstName}</Table.Cell>
-                <Table.Cell>{contact.phone}</Table.Cell>
-                <Table.Cell><Button color="red">Delete</Button></Table.Cell>
-              </Table.Row>
+              <Contact key={contact.id} {...contact} />
           ))
         }
       </Table.Body>
