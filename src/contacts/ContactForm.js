@@ -7,6 +7,13 @@ class ContactForm extends Component {
     phone: ''
   };
 
+  componentDidMount() {
+    if (this.props.id) {
+      const { firstName, phone } = this.props;
+      this.setState({ firstName, phone });
+    }
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
@@ -14,7 +21,11 @@ class ContactForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.add(this.state);
+    if (this.props.id) {
+      this.props.edit(this.state, this.props.id);
+    } else {
+      this.props.add(this.state);
+    }
     this.setState({firstName: '', phone: ''});
   };
 

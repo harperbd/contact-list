@@ -33,6 +33,24 @@ class App extends Component {
     this.setState({contacts: [...contacts]});
   };
 
+  updateContact = (contactData, id) => {
+    // let removeIndex = this.state.contacts.map((item) => {
+    //   return item.id;
+    // }).indexOf(id);
+    //
+    // removeIndex && this.state.contacts.splice(removeIndex, 1);
+    // this.addContact(contactData)
+
+    let contacts = this.state.contacts;
+    contacts.map(c => {
+      if (c.id === id) {
+        c.firstName = contactData.firstName;
+        c.phone = contactData.phone;
+      }
+      this.setState({ contacts: [...contacts]});
+    });
+  };
+
   render() {
     return (
       <Container>
@@ -42,7 +60,9 @@ class App extends Component {
         <br />
         <Contacts
             contacts={this.state.contacts}
-            remove={this.removeContact} />
+            remove={this.removeContact}
+            edit={this.updateContact}
+        />
       </Container>
     );
   }
