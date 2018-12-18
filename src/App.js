@@ -24,6 +24,15 @@ class App extends Component {
     this.setState({ contacts: [newContact, ...this.state.contacts] });
   };
 
+  removeContact = (id) => {
+    const contacts = this.state.contacts.filter(contact => {
+      if (id !== contact.id) {
+        return contact;
+      }
+    });
+    this.setState({contacts: [...contacts]});
+  };
+
   render() {
     return (
       <Container>
@@ -31,7 +40,9 @@ class App extends Component {
         <br />
         <ContactForm add={this.addContact} />
         <br />
-        <Contacts contacts={this.state.contacts} />
+        <Contacts
+            contacts={this.state.contacts}
+            remove={this.removeContact} />
       </Container>
     );
   }
