@@ -55,19 +55,20 @@ class App extends Component {
   };
 
   render() {
+    const { showForm, contacts } = this.state;
     return (
       <Container>
         <Header as="h1">React Contact List</Header>
         <br />
         <Segment>
           <Button icon color="blue" onClick={this.toggleForm}>
-            <Icon name={this.state.showForm ? 'angle double up' : 'angle double down'} />
+            <Icon name={showForm ? 'angle double up' : 'angle double down'} />
           </Button>
-          {this.state.showForm ? <ContactForm add={this.addContact} /> : null }
+          {showForm ? <ContactForm add={this.addContact} /> : null }
         </Segment>
         <br />
         <Contacts
-            contacts={this.state.contacts}
+            contacts={contacts}
             remove={this.removeContact}
             edit={this.updateContact}
         />
